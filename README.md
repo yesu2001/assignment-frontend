@@ -1,7 +1,7 @@
-##1. Explain what the simple `List` component does.
+## 1. Explain what the simple `List` component does.
   The List component displays the list items in the array.The items are mapped through each item and displays the text.
 
-##2. What problems / warnings are there with code?
+## 2. What problems / warnings are there with code?
 
   a - the useState is being misplaced as in :
    ```Javascript
@@ -42,7 +42,7 @@
   ))}
 
   ```
-##3. Please fix, optimize, and/or modify the component as much as you think is necessary.
+## 3. Please fix, optimize, and/or modify the component as much as you think is necessary.
 
 ## Code
 
