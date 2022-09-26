@@ -48,15 +48,10 @@
 
 ```javascript
 import React, { useState, useEffect, memo } from 'react';
-      import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-      // Single List Item
-      const WrappedSingleListItem = ({
-      index,
-      isSelected,
-     onClickHandler,
-     text,
-     }) => {
+// Single List Item
+const WrappedSingleListItem = ({index,isSelected,onClickHandler,text,}) => {
        return (
             <li
               style={{ backgroundColor: isSelected ? 'green' : 'red'}}
@@ -65,13 +60,13 @@ import React, { useState, useEffect, memo } from 'react';
           {text}
          </li>
         );
-   };
+};
 
-  WrappedSingleListItem.propTypes = {
-       index: PropTypes.number,
-       isSelected: PropTypes.bool,
-      onClickHandler: PropTypes.func.isRequired,
-      text: PropTypes.string.isRequired,
+WrappedSingleListItem.propTypes = {
+  index: PropTypes.number,
+  isSelected: PropTypes.bool,
+  onClickHandler: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
  };
 
  WrappedSingleListItem.defaultProps = {
@@ -80,20 +75,17 @@ import React, { useState, useEffect, memo } from 'react';
 
  const SingleListItem = memo(WrappedSingleListItem);
 
- const WrappedListComponent = ({
-     items,
- }) => {
-      const [selectedIndex,setSelectedIndex] = useState();
+ const WrappedListComponent = ({items}) => {
+   const [selectedIndex,setSelectedIndex] = useState();
+   useEffect(() => {
+      setSelectedIndex(null);
+   }, [items]);
 
-      useEffect(() => {
-           setSelectedIndex(null);
-     }, [items]);
-
-  const handleClick = index => {
+   const handleClick = index => {
      setSelectedIndex(index);
-  };
+   };
 
-  return (
+   return (
        <ul style={{ textAlign: 'left' }}>
           {items.map((item, index) => (
              <SingleListItem
@@ -101,7 +93,7 @@ import React, { useState, useEffect, memo } from 'react';
                  text={item.text}
                   key={index}
                  isSelected={selectedIndex === index}
-            />
+             />
          ))}
       </ul>
  )};
